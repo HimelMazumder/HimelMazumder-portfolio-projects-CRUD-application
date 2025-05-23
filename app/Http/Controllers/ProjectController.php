@@ -41,7 +41,7 @@ class ProjectController extends Controller
             'description' => 'nullable|string',
             'url_repo' => 'nullable|string|max:255',
             'url_live' => 'nullable|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'status' => 'required|in:draft,published',
         ]);
 

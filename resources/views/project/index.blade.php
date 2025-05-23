@@ -57,11 +57,34 @@
                                         </div>
                                     </th>
                                     <td class="max-w-50 text-justify">{{ ucfirst($project->title) }}</td>
-                                    <td class="max-w-70 text-justify">{{ $project->description }}</td>
-                                    <td><a class="link link-primary" href={{ $project->url_repo }}
-                                            target="_blank">Project Repo</a></td>
-                                    <td><a class="link link-primary" href={{ $project->url_live }} target="_blank">Live
-                                            Project</a></td>
+                                    <td class="max-w-70 text-justify">
+                                        @if (!empty($project->description))
+                                            {{ $project->description }}
+                                        @else
+                                            <span>No description</span>
+                                        @endif
+                                    </td>
+
+
+                                    <td>
+                                        @if (!empty($project->url_repo))
+                                            <a class="link link-primary" href="{{ $project->url_repo }}"
+                                                target="_blank">Project Repo</a>
+                                        @else
+                                            <span>No repository</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if (!empty($project->url_live))
+                                            <a class="link link-primary" href="{{ $project->url_live }}"
+                                                target="_blank">Live Project</a>
+                                        @else
+                                            <span>No live link</span>
+                                        @endif
+                                    </td>
+
+
+
                                     <td>
                                         <div
                                             class="{{ 'w-fit h-fit rounded-lg px-2 py-1 ' . ($project->status == 'published' ? 'bg-green-700 text-white' : 'bg-yellow-400 text-[#222]') . ' text-sm' }}">

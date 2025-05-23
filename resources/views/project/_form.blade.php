@@ -6,10 +6,16 @@
         @method('PUT')
     @endif
 
-    <label class="input w-full text-[#222] bg-blue-100">
-        <span class="label text-[#222]">Title</span>
-        <input name="title" value="{{ old('title', $project->title ?? '') }}" required />
-    </label>
+    <div>
+        <label
+            class="input w-full text-[#222] bg-blue-100 {{ $errors->has('title') ? 'border-red-500 ring-red-500' : '' }}">
+            <span class="label text-[#222]">Title</span>
+            <input name="title" value="{{ old('title', $project->title ?? '') }}" {{-- required --}} />
+        </label>
+        @error('title')
+            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+        @enderror
+    </div>
 
     <textarea name="description" placeholder="Description" class="textarea textarea-sm w-full text-[#222] bg-blue-100">{{ old('description', $project->description ?? '') }}</textarea>
 
@@ -27,9 +33,14 @@
 
     <div class="flex flex-col gap-1">
         <input name="image" type="file" accept="image/*"
-            class="file-input file:bg-blue-500 file:border-r-0 w-full text-[#222] bg-blue-100" />
+            class="file-input file:bg-blue-500 file:border-r-0 w-full text-[#222] bg-blue-100 {{ $errors->has('image') ? 'border-red-500 ring-red-500' : '' }}" />
         @if (isset($project) && $project->image)
-            <img src="{{ asset('storage/' . $project->image) }}" alt="Project Image" width="70" class="ml-1 rounded-lg border-2 border-blue-500" />
+            <img src="{{ asset('storage/' . $project->image) }}" alt="Project Image" width="70"
+                class="ml-1 rounded-lg border-2 border-blue-500" />
+        @else
+            @error('image')
+                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+            @enderror
         @endif
     </div>
 
