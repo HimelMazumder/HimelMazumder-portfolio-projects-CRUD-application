@@ -1,61 +1,121 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📂 Portfolio Projects CRUD Application
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This is a **Laravel 12** based CRUD web application for managing portfolio projects. It allows users to add, edit, view, and delete projects, complete with validation, pagination, and image upload support.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Laravel Version
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Laravel v12**
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## ⚙️ Setup Instructions (Windows)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 1. Install PHP & Composer
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+To install PHP and Composer on Windows, open **PowerShell as Administrator** and run the following command:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force; `
+[System.Net.ServicePointManager]::SecurityProtocol = `
+[System.Net.ServicePointManager]::SecurityProtocol -bor 3072; `
+iex ((New-Object System.Net.WebClient).DownloadString('https://php.new/install/windows/8.4'))
+```
 
-## Laravel Sponsors
+### 2. Install Laravel Installer
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```bash
+composer global require laravel/installer
+```
 
-### Premium Partners
+### 3. Create Laravel Project
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+```bash
+composer create-project laravel/laravel portfolio-projects-CRUD-application
+```
 
-## Contributing
+### 4. Install XAMPP
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Download and install XAMPP from [https://www.apachefriends.org](https://www.apachefriends.org).  
+Start the **Apache** and **MySQL** services from the XAMPP Control Panel.
 
-## Code of Conduct
+### 5. Create the MySQL Database
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- Visit [http://localhost/phpmyadmin](http://localhost/phpmyadmin)
+- Create a new database with the following name:
 
-## Security Vulnerabilities
+```
+portfolio-projects-crud-application
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 6. Configure Laravel to Use MySQL
 
-## License
+Open the `.env` file in the project root and update these lines:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=portfolio-projects-crud-application
+DB_USERNAME=root
+DB_PASSWORD=  # (Leave empty unless you've set a password)
+```
+
+### 7. Run Migrations
+
+```bash
+php artisan migrate
+```
+
+### 8. Start the Development Server
+
+```bash
+php artisan serve
+```
+
+Open your browser and go to: [http://localhost:8000](http://localhost:8000)
+
+---
+
+## 🗄️ Database Information
+
+- **Database Type:** MySQL
+- **Database Name:** `portfolio-projects-crud-application`
+- **Database Password:** N/A
+
+---
+
+## 📝 Additional Notes
+
+- ✅ **Class-based controllers** are used instead of function-based ones.
+- 📄 **Pagination** is implemented with **2 projects per page** for better visualization.
+- 🌐 **Project URLs** are split into:
+  - Repository URL
+  - Live URL
+- 📥 **Form validation** is performed on the backend:
+  - Invalid fields are marked with red borders.
+  - Error messages are shown inline below the inputs.
+- 📌 Required fields during project creation:
+  - `Title`
+  - `Image`
+  - `Status`
+- 🖼️ **Image is optional during editing**.
+- 🧾 **A single form** is used for both creating and editing projects.
+
+---
+
+## 📌 Summary
+
+| Feature            | Status       |
+|--------------------|--------------|
+| Laravel 12         | ✅            |
+| MySQL Integration  | ✅            |
+| Pagination         | ✅ (2 per page) |
+| Validation         | ✅            |
+| CRUD Operations    | ✅            |
+| Image Upload       | ✅ (Required on create, optional on edit) |
+| Clean UX           | ✅            |
+
+---
+
