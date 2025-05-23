@@ -117,6 +117,9 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="mt-5 flex justify-end mb-2 mr-2">
+                        {{ $projects->links() }}
+                    </div>
                 </div>
             @endif
         </div>

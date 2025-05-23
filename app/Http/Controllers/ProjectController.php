@@ -12,7 +12,14 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        // $projects = Project::all();
+        $projects = Project::paginate(2);
+
+        // for now-empty page
+        if ($projects->isEmpty() && $projects->currentPage() !== 1) {
+            return redirect()->route('project.index');
+        }
+
         return view('project.index', compact('projects'));
     }
 
